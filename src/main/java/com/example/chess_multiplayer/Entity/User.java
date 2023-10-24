@@ -32,11 +32,6 @@ public class User {
     @Column(name = "Draw")
     private Integer draw;
 
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "IDUser", nullable = false)
-    private Account account1;
-
     @OneToMany(mappedBy = "iDUser")
     private Set<Friend> friends = new LinkedHashSet<>();
 
@@ -59,17 +54,8 @@ public class User {
         this.friends = friends;
     }
 
-    public Account getAccount1() {
-        return account1;
-    }
 
-    public void setAccount1(Account account1) {
-        this.account1 = account1;
-    }
-
-    public String getIDUser() {
-        return iDUser;
-    }
+    public String getIDUser() { return iDUser; }
 
     public void setIDUser(String iDUser) {
         this.iDUser = iDUser;
