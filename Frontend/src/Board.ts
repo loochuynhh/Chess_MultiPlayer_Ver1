@@ -1,6 +1,11 @@
-import { Point } from "./Point";
-import { Knight } from "./Knight";
-import { Pawn } from "./Pawn";
+import { Point } from "./Point"; 
+import { Color } from "./Enum"; 
+import { Knight } from "./Pieces/Knight";
+import { Pawn } from "./Pieces/Pawn";
+import { Rook } from "./Pieces/Rook"; 
+import { Bishop } from "./Pieces/Bishop"; 
+import { Queen } from "./Pieces/Queen";
+import { King } from "./Pieces/King"; 
 
 export class Board{
     boxes: Point[][]
@@ -17,18 +22,48 @@ export class Board{
     resetBoard() {
         this.boxes = []; // Khởi tạo mảng chính
     
-        for (let i = 0; i < 8; i++) {
-            this.boxes[i] = []; // Khởi tạo mảng con cho mỗi hàng
+        for (let r = 0; r < 8; r++) {
+            this.boxes[r] = []; // Khởi tạo mảng con cho mỗi hàng
     
-            for (let j = 0; j < 8; j++) {
-                if (i === 7 && j === 1) {
-                    this.boxes[7][1] = new Point(7, 1, new Knight(false, "./assets/Black-Knight.png"));
-                } else if (i === 0 && j === 1) {
-                    this.boxes[0][1] = new Point(0, 1, new Knight(true, "./assets/White-Knight.png"));
-                } else if (i===1){
-                    this.boxes[1][j] = new Point(0, 1, new Pawn(true, "./assets/White-Pawn.png")); 
-                } else {
-                    this.boxes[i][j] = new Point(i, j);
+            for (let c = 0; c < 8; c++) {
+                if (r === 7) {
+                    if (c === 0 || c===7)
+                        this.boxes[r][c] = new Point(r, c, new Rook(Color.BLACK, "./assets/Black-Rook.png"));
+                    else if(c === 1 || c === 6)
+                        this.boxes[r][c] = new Point(r, c, new Knight(Color.BLACK, "./assets/Black-Knight.png"));
+                    else if(c === 2 || c === 5)
+                        this.boxes[r][c] = new Point(r, c, new Bishop(Color.BLACK, "./assets/Black-Bishop.png"));
+                    else if(c === 3)
+                        this.boxes[r][c] = new Point(r, c, new Queen(Color.BLACK, "./assets/Black-Queen.png"));
+                    else if(c === 4)
+                        this.boxes[r][c] = new Point(r, c, new King(Color.BLACK, "./assets/Black-King.png"));
+                    // else{
+
+                    // }
+                }else if (r === 0){
+                    if (c === 0 || c===7)
+                    // this.boxes[r][c] = new Point(r, c);
+                        this.boxes[r][c] = new Point(r, c, new Rook(Color.WHITE, "./assets/White-Rook.png"));
+                    else if(c === 1 || c === 6)
+                    // this.boxes[r][c] = new Point(r, c);
+                        this.boxes[r][c] = new Point(r, c, new Knight(Color.WHITE, "./assets/White-Knight.png"));
+                    else if(c === 2 || c === 5)
+                    this.boxes[r][c] = new Point(r, c);
+                        // this.boxes[r][c] = new Point(r, c, new Bishop(Color.WHITE, "./assets/White-Bishop.png"));
+                    else if(c === 3)
+                    // this.boxes[r][c] = new Point(r, c);
+                        this.boxes[r][c] = new Point(r, c, new Queen(Color.WHITE, "./assets/White-Queen.png"));
+                    else if(c === 4)
+                    // this.boxes[r][c] = new Point(r, c);
+                        this.boxes[r][c] = new Point(r, c, new King(Color.WHITE, "./assets/White-King.png"));
+                } 
+                // else if (r === 1)
+                //     this.boxes[r][c] = new Point(r, c, new Pawn(Color.WHITE, "./assets/White-Pawn.png"));
+                // else if (r === 6)
+                //     // this.boxes[r][c] = new Point(r, c);
+                //     this.boxes[r][c] = new Point(r, c, new Pawn(Color.BLACK, "./assets/Black-Pawn.png")); 
+                else {
+                    this.boxes[r][c] = new Point(r, c);
                 }
             }
         }

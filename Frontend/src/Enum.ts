@@ -3,7 +3,7 @@ export enum Color{
     BLACK
 }
 export enum Side{
-    PLAYER,
+    SELF,
     OPPONENT
 }
 export enum GameStatus { 

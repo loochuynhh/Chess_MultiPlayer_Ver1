@@ -1,29 +1,33 @@
+import { Side } from "./Enum";
+import { Color } from "./Enum";
 export abstract class Player {
-    whiteSide: boolean;
-    humanPlayer: boolean;
+    // whiteSide: boolean;
+    // humanPlayer: boolean;
+    color: Color
+    side: Side
 
-    constructor(whiteSide: boolean, humanPlayer: boolean) {
-        this.whiteSide = whiteSide;
-        this.humanPlayer = humanPlayer;
+    constructor(color: Color,side: Side) {
+        this.side = side;
+        this.color = color;
     }
 
-    isWhiteSide(): boolean {
-        return this.whiteSide;
-    }
+    // isWhiteSide(): boolean {
+    //     return this.whiteSide;
+    // }
 
-    isHumanPlayer(): boolean {
-        return this.humanPlayer;
+    // isHumanPlayer(): boolean {
+    //     return this.humanPlayer;
+    // }
+}
+
+export class Self extends Player {
+    constructor(color: Color) {
+        super(color, Side.SELF);
     }
 }
 
-export class HumanPlayer extends Player {
-    constructor(whiteSide: boolean) {
-        super(whiteSide, true);
-    }
-}
-
-export class ComputerPlayer extends Player {
-    constructor(whiteSide: boolean) {
-        super(whiteSide, false);
+export class Opponent extends Player {
+    constructor(color: Color) {
+        super(color, Side.OPPONENT);
     }
 }

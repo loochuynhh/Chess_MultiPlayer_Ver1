@@ -1,16 +1,15 @@
-import { ComputerPlayer, HumanPlayer, Player } from "./Player";
+import { Self, Opponent, Player } from "./Player";
 import { Board } from "./Board";
-import { GameStatus } from "./Enum";
+import { Color, GameStatus } from "./Enum";
 import { Move } from "./Move";
-import { Point } from "./Point";
-import { Piece } from "./Piece";
+import { Point } from "./Point"; 
+import { Piece } from "./Pieces/Piece";
 export class Game { 
     private _players: Player[] = []
-    private _board: Board = new Board();
-    private _currentTurn: Player = new HumanPlayer(true)
-    private _status: GameStatus = GameStatus.ACTIVE; 
-    private _movesPlayed: Move[] = [] 
-
+    private _board: Board = new Board()
+    private _currentTurn: Player = this._players[0]
+    private _status: GameStatus = GameStatus.ACTIVE
+    private _movesPlayed: Move[] = []  
     // private _players: Player[]
     // private _board: Board 
     // private _currentTurn: Player
@@ -34,17 +33,28 @@ export class Game {
 	}
 	initialize(p1: Player,p2: Player) 
 	{ 
-		this._players[0] = p1; 
-		this._players[1] = p2; 
+		this._players[0] = p1 
+		this._players[1] = p2 
 
 		this._board.resetBoard()
 
-		if (p1.isWhiteSide()) { 
-			this._currentTurn = p1; 
+		if (p1.color === Color.WHITE ){
+			console.log("white la p1")
+			this._currentTurn = p1
+			// this._players[0] = p1 
+			// this._players[1] = p2 
+		}else{
+			console.log("white la p2")
+			this._currentTurn = p2
+			// this._players[0] = p1 
+			// this._players[1] = p2 			
 		} 
-		else { 
-			this._currentTurn = p2; 
-		} 
+		// if (p1.isWhiteSide()) { 
+		// 	this._currentTurn = p1; 
+		// } 
+		// else { 
+		// 	this._currentTurn = p2; 
+		// } 
         this._movesPlayed.splice(0,this._movesPlayed.length)
 	} 
 
@@ -73,6 +83,7 @@ export class Game {
 
 	makeMove(move: Move, player: Player) : boolean
 	{ 
+		
         let sourcePiece: Piece | null 
         sourcePiece = move.startPoint.piece
         console.log("img " + sourcePiece?.image + move.startPoint.row + move.startPoint.col )
@@ -82,13 +93,19 @@ export class Game {
 		} 
 
 		// valid player 
-		if (player != this._currentTurn) { 
-			console.log("valid player ")
+		if (player !== this._currentTurn) { 
+			console.log("chua toi luot")
 			return false; 
 		} 
 
-		if (sourcePiece.white != player.isWhiteSide()) { 
-			console.log("white")
+		if (sourcePiece.color !== player.color) { 
+			console.log("khong the choi quan cua doi thu")
+			if (sourcePiece.color === Color.WHITE)
+				console.log("source piece: trang")
+			else console.log("source piece: den")
+			if (player.color === Color.WHITE)
+				console.log("player: trang")
+			else console.log("player: den")
 			return false; 
 		} 
 
@@ -141,4 +158,11 @@ export class Game {
 
 		return true; 
 	} 
+	receiveBoard(s: string){
+		// for (let r = 0; r <8;r++){
+		// 	for(let c = 0; c <8;c++){
+		// 	}
+		// }
+		this._board.resetBoard()		//Tạm thời hàm nhận sẽ reset lại bàn cờ. Khi nối đc server, sẽ gọi hàm trong board  
+	}
 } 

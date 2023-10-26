@@ -1,4 +1,5 @@
-import { Piece } from "./Piece";
+import { Piece } from "./Pieces/Piece";
+
 export class Point { 
 	private _piece: Piece | null;
     private _col: number;

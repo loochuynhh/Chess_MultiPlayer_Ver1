@@ -1,15 +1,16 @@
-import { Piece } from "./Piece";
-import { Point } from "./Point";
-import { Board } from "./Board";
+import { Piece } from "./Piece"; 
+import { Point } from "src/Point";
+import { Board } from "src/Board";
+import { Color } from "src/Enum";
 
 export class Knight extends Piece{
-    constructor(white: boolean, image: string) 
+    constructor(color: Color, image: string) 
     { 
-        super(white,image); 
+        super(color,image); 
     }
     canMove(board: Board, startPoint: Point, endPoint: Point): boolean { 
-        if(endPoint.piece && endPoint.piece.white === this.white){ 
-            console.log("knight")
+        if(endPoint.piece && endPoint.piece.color === this.color){ 
+            console.log("knight spy")
             return false
         }
         let col: number = Math.abs(startPoint.col - endPoint.col)
