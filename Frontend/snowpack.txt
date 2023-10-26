@@ -1,6 +1,6 @@
 npm init -y
 npm i --save-dev typescript
-npx tsc --init
+    npx tsc --init
 
 package.json: test -> "scripts": {
  				   "start": "tsc --watch"
