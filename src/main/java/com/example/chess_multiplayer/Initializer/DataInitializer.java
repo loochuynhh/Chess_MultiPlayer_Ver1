@@ -16,10 +16,15 @@ public class DataInitializer implements ApplicationRunner {
     private UserService userService;
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        //System.out.println("Bắt đầu nạp");
-        //userService.addUserData();
-        System.out.println("Nạp Account nạp");
-        //accountService.addAccountData();
-        //System.out.println("Kết thúc nạp");
+        try{
+            System.out.println("Bắt đầu nạp");
+            userService.addUserData();
+            System.out.println("Nạp Account");
+            accountService.addAccountData();
+            System.out.println("Kết thúc nạp");
+        }catch (Exception exception){
+            exception.printStackTrace();
+        }
+
     }
 }
