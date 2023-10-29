@@ -3,7 +3,7 @@ import { Board } from "./Board";
 import { Color, GameStatus } from "./Enum";
 import { Move } from "./Move";
 import { Point } from "./Point"; 
-import { Piece } from "./Pieces/Piece";
+import { Piece } from "./Piece";
 export class Game { 
     private _players: Player[] = []
     private _board: Board = new Board()

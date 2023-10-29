@@ -3,10 +3,7 @@ package com.example.chess_multiplayer.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "roomuser", schema = "db_pbl4_ver2", indexes = {
-        @Index(name = "FK_RoomUser_User_idx", columnList = "IDUser"),
-        @Index(name = "FK_RoomUser_Room_idx", columnList = "IDRoom")
-})
+@Table(name = "roomuser", schema = "db_pbl4")
 public class Roomuser {
     @Id
     @Column(name = "IDRoomUser", nullable = false, length = 5)
@@ -14,11 +11,11 @@ public class Roomuser {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "IDUser", nullable = false)
-    private User iDUser;
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "IDRoom", nullable = false)
-    private Room iDRoom;
+    private Room room;
 
     @Column(name = "Chat", length = 1000)
     private String chat;
@@ -34,21 +31,6 @@ public class Roomuser {
         this.iDRoomUser = iDRoomUser;
     }
 
-    public User getIDUser() {
-        return iDUser;
-    }
-
-    public void setIDUser(User iDUser) {
-        this.iDUser = iDUser;
-    }
-
-    public Room getIDRoom() {
-        return iDRoom;
-    }
-
-    public void setIDRoom(Room iDRoom) {
-        this.iDRoom = iDRoom;
-    }
 
     public String getChat() {
         return chat;
@@ -66,4 +48,19 @@ public class Roomuser {
         this.result = result;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 }

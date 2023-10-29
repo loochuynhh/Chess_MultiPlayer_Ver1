@@ -3,13 +3,12 @@ package com.example.chess_multiplayer.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "account", schema = "db_pbl4_ver2")
+@Table(name = "account", schema = "db_pbl4")
 public class Account {
     @Id
-    @Column(name = "IDUser", nullable = false, length = 5)
-    private String iDUser;
+    @Column(name = "IDAccount", nullable = false, length = 5)
+    private String iDAccount;
 
-    @MapsId
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "IDUser", nullable = false)
     private User user;
@@ -17,16 +16,9 @@ public class Account {
     @Column(name = "Username", length = 50)
     private String username;
 
-    @Column(name = "Password", length = 50)
+    @Column(name = "Password", length = 100)
     private String password;
 
-    public String getIDUser() {
-        return iDUser;
-    }
-
-    public void setIDUser(String iDUser) {
-        this.iDUser = iDUser;
-    }
 
     public User getUser() {
         return user;
@@ -52,4 +44,11 @@ public class Account {
         this.password = password;
     }
 
+    public String getiDAccount() {
+        return iDAccount;
+    }
+
+    public void setiDAccount(String iDAccount) {
+        this.iDAccount = iDAccount;
+    }
 }

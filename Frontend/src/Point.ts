@@ -1,4 +1,4 @@
-import { Piece } from "./Pieces/Piece";
+import { Piece } from "./Piece";
 
 export class Point { 
 	private _piece: Piece | null;

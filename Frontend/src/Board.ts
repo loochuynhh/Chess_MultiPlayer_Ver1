@@ -1,11 +1,11 @@
 import { Point } from "./Point"; 
 import { Color } from "./Enum"; 
-import { Knight } from "./Pieces/Knight";
-import { Pawn } from "./Pieces/Pawn";
-import { Rook } from "./Pieces/Rook"; 
-import { Bishop } from "./Pieces/Bishop"; 
-import { Queen } from "./Pieces/Queen";
-import { King } from "./Pieces/King"; 
+import { Knight } from "./Knight";
+import { Pawn } from "./Pawn";
+import { Rook } from "./Rook"; 
+import { Bishop } from "./Bishop"; 
+import { Queen } from "./Queen";
+import { King } from "./King"; 
 
 export class Board{
     boxes: Point[][]
@@ -48,8 +48,8 @@ export class Board{
                     // this.boxes[r][c] = new Point(r, c);
                         this.boxes[r][c] = new Point(r, c, new Knight(Color.WHITE, "./assets/White-Knight.png"));
                     else if(c === 2 || c === 5)
-                    this.boxes[r][c] = new Point(r, c);
-                        // this.boxes[r][c] = new Point(r, c, new Bishop(Color.WHITE, "./assets/White-Bishop.png"));
+                    // this.boxes[r][c] = new Point(r, c);
+                        this.boxes[r][c] = new Point(r, c, new Bishop(Color.WHITE, "./assets/White-Bishop.png"));
                     else if(c === 3)
                     // this.boxes[r][c] = new Point(r, c);
                         this.boxes[r][c] = new Point(r, c, new Queen(Color.WHITE, "./assets/White-Queen.png"));
@@ -57,11 +57,11 @@ export class Board{
                     // this.boxes[r][c] = new Point(r, c);
                         this.boxes[r][c] = new Point(r, c, new King(Color.WHITE, "./assets/White-King.png"));
                 } 
-                // else if (r === 1)
-                //     this.boxes[r][c] = new Point(r, c, new Pawn(Color.WHITE, "./assets/White-Pawn.png"));
-                // else if (r === 6)
-                //     // this.boxes[r][c] = new Point(r, c);
-                //     this.boxes[r][c] = new Point(r, c, new Pawn(Color.BLACK, "./assets/Black-Pawn.png")); 
+                else if (r === 1)
+                    this.boxes[r][c] = new Point(r, c, new Pawn(Color.WHITE, "./assets/White-Pawn.png"));
+                else if (r === 6)
+                    // this.boxes[r][c] = new Point(r, c);
+                    this.boxes[r][c] = new Point(r, c, new Pawn(Color.BLACK, "./assets/Black-Pawn.png")); 
                 else {
                     this.boxes[r][c] = new Point(r, c);
                 }
