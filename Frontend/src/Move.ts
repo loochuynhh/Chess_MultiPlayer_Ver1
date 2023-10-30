@@ -1,6 +1,6 @@
 import { Player } from "./Player";
 import { Point } from "./Point"; 
-import { Piece } from "./Pieces/Piece";
+import { Piece } from "./Piece";
 
 export class Move{
     private _player: Player
