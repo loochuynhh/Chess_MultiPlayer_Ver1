@@ -6,15 +6,13 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "user", schema = "db_pbl4_ver2")
+@Table(name = "user", schema = "db_pbl4")
 public class User {
     @Id
     @Column(name = "IDUser", nullable = false, length = 5)
     private String iDUser;
 
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "IDUser", nullable = false)
+    @OneToOne(mappedBy = "user",fetch = FetchType.LAZY, optional = false)
     private Account account;
 
     @Column(name = "Ava")
@@ -32,10 +30,10 @@ public class User {
     @Column(name = "Draw")
     private Integer draw;
 
-    @OneToMany(mappedBy = "iDUser")
+    @OneToMany(mappedBy = "user")
     private Set<Friend> friends = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "iDUser")
+    @OneToMany(mappedBy = "user")
     private Set<Roomuser> roomusers = new LinkedHashSet<>();
 
     public Set<Roomuser> getRoomusers() {

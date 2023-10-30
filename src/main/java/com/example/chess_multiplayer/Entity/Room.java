@@ -7,7 +7,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "room", schema = "db_pbl4_ver2")
+@Table(name = "room", schema = "db_pbl4")
 public class Room {
     @Id
     @Column(name = "IDRoom", nullable = false, length = 5)
@@ -22,7 +22,7 @@ public class Room {
     @Column(name = "Mode")
     private Integer mode;
 
-    @OneToMany(mappedBy = "iDRoom")
+    @OneToMany(mappedBy = "room")
     private Set<Roomuser> roomusers = new LinkedHashSet<>();
 
     public Set<Roomuser> getRoomusers() {
