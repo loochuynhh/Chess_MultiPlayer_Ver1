@@ -129,15 +129,15 @@ public class DataInitializer implements ApplicationRunner {
             friend43.setUser(user4);
             friend43.setFriend(user3);
             HashSet<Friend> friendHashSet1 = new HashSet<>();
-            friendHashSet1.add(friend12);
-            friendHashSet1.add(friend13);
+//            friendHashSet1.add(friend12);
+//            friendHashSet1.add(friend13);
             HashSet<Friend> friendHashSet2 = new HashSet<>();
-            friendHashSet2.add(friend21);
+//            friendHashSet2.add(friend21);
             HashSet<Friend> friendHashSet3 = new HashSet<>();
-            friendHashSet3.add(friend31);
-            friendHashSet3.add(friend34);
+//            friendHashSet3.add(friend31);
+//            friendHashSet3.add(friend34);
             HashSet<Friend> friendHashSet4 = new HashSet<>();
-            friendHashSet4.add(friend43);
+//            friendHashSet4.add(friend43);
 
             // Duyệt qua danh sách bạn và thêm bạn vào `HashSet` của mỗi người dùng.
             user1.setFriends(friendHashSet1);
